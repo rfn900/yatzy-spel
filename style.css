@@ -1,0 +1,347 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    background-color: #E0E2DB;
+    font-family: montserrat;
+
+}
+
+.container {
+    margin: auto;
+    display: flex;
+    height: 95vh;
+    width: 80vw;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.yatzy-table{
+    display: flex;
+}
+
+.playbox{
+    position: relative;
+    
+    display: flex;
+    width: 30vw;
+    height: 20vh;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.diceShow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 3vh;
+    margin: 0;
+    
+    }
+
+.input-box{
+  display: flex;    
+}
+
+.dialogue{
+    display: flex;
+    margin-top: 20px;
+    align-content: space-around;
+}
+table {
+    position: relative;
+    margin: 0;
+    border: 2px #191716 solid;
+    border-right-width: 0;
+    border-collapse: collapse;
+    width: 20vw;
+    height: 30vh;
+    font-size: 14px;
+}
+
+
+td{
+    background-color: #BEB7A4;
+    padding: 3px 20px 3px 5px;
+    border: 1px #191716 solid;
+}
+th{
+    min-width: 180px;
+    background-color: #ffffff;
+    padding: 3px 20px 3px 5px;
+    border: 1px #191716 solid;
+}
+
+
+td:nth-child(odd) {
+    background-color: #ffffff;
+}
+td:nth-child(6) {
+    background: none;
+}
+
+.info-row td {
+    background-color: #E0E2DB;
+    border: 2px black solid;
+    text-align: center;
+    font-weight: 700;
+    
+}
+.info-row-point {
+    background-color: #E0E2DB;
+    color: #3D348B;
+    text-align: center;
+    font-weight: bold;
+    
+}
+.info-row-main {
+    font-weight: 900;
+    background-color:#3D348B!important;
+    color: #ffffff;
+}
+
+td>input {
+    width: 2vw;
+    border: 0;
+    background-color:inherit;
+}
+
+
+.button-placeholder{
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+.calculateButton{
+    position: relative;
+    margin-left: auto;
+    display: flex;
+    float:right;
+}
+
+.calculate-button:disabled{
+    opacity: 0.7;
+    height:50px;
+    background-color:#BEB7A4;
+    border: 0;
+    color: #111111;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    cursor: default;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button, .calculate-button{
+    height:50px;
+    background-color: #E6AF2E;
+    color: #191716;
+    border: 1px solid black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.diceShow__dice img{
+    display: flex;
+    width: 5vw;
+    margin-bottom: 10px;
+}
+.diceShow input{
+    display: flex;
+    margin: auto;
+    width: 3vw;
+    height: 3vh;
+}
+
+.diceShow  ul{
+    text-align: center;
+}
+.diceShow ul li{
+    list-style-type: none;
+    float: left;
+    text-align: center;
+}
+
+.pointsDisplay{
+    border: 0!important;
+    color:#191716;
+    font-weight: 700;
+    max-width: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.pointsDisplay img{
+
+}
+tbody th:last-child{
+    border-top: 0!important;
+}
+
+.playbox-title{
+    text-align: center;
+}
+
+
+.header{
+    position:fixed;
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0;
+    background-color: #111111;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.logo{
+    margin-left: 60px;
+    color: #ffffff
+}
+
+.menu-nav{
+    display: flex;
+    margin-right: 60px;
+    flex-wrap: nowrap;
+}
+
+.menu-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .menu-nav ul li {
+    float: left;
+    margin-left: 10px;
+    height: 100%;
+  }
+  
+  .menu-nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  .menu-nav ul li a:hover {
+    background-color: #fff;
+    color: #111111
+  }
+
+footer{
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    justify-content: center;
+    width: 100%;
+    background-color: #BEB7A4;
+    box-shadow: 8px 4px 8px 0 rgba(0, 0, 0, 0.2), 8px 6px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+.footer-images{
+      display: flex;
+      justify-content: space-evenly;
+      width: 20%;
+
+  }
+
+  footer img {
+      
+      width: 60px;
+  }
+  .final-score{
+    background-color: #E6AF2E!important;
+}
+
+ .chat-room{
+     position: fixed;
+     display: flex;
+     flex-direction: column;
+     z-index: 9999999;
+     right: 5px;
+     bottom: 0;
+     height: 60vh;
+     width: 380px;
+     padding-bottom: 10px;
+     background-color: #fff;
+     justify-content: space-between;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+
+ }
+ .chat-body{
+     display: flex;
+     flex-direction: column;
+     margin-left: 10px;
+ }
+
+ .message-box p{
+     margin-right: 10px;
+     margin-bottom: 8px;
+     display: flex;     
+     background-color: #E0E2DB;
+     padding: 15px 20px;
+     border-radius: 99px;
+ }
+
+ .message-box:nth-child(even){
+     margin-left: auto;
+ }
+ .message-box:nth-child(odd){
+    margin-right: auto;
+}
+
+ .chat-top-bar{
+     display: flex;
+     position: relative;
+     background-color: #111111;
+     height: 40px;
+     flex-direction: row;
+     justify-content: flex-end;
+ }
+
+ .input-area{
+     position: relative;
+     display: flex;
+     padding: 0 10px;
+     align-items: center;
+ }
+
+ .chat-input{
+     position: relative;
+     height: 40px;
+     width: 300px;
+     margin: auto;
+     border-radius: 99px;
+     border: 1px solid #111111;  
+     color: lightgray;
+     font-size: 18px;
+     padding-left: 10px;
+     
+ }
+ .input-area img{
+     width: 50px;
+ }
+
+ .chat-top-bar img{
+     cursor: pointer;
+    margin-right: 5px;
+    width: 30px;
+ }
+
+ .chat-username{
+     font-style: italic;
+     font-size: 12px;
+     margin-left: 10px;
+     padding: 0;
+     color: #313131;
+ }

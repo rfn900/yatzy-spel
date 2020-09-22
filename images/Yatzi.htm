@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5502/Yatzi.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatzi</title>
+    
+<style type="text/css">.ckf79tetj00003h60wlrn12j9:hover {background:#ddd !important;}</style><link rel="stylesheet" href="./Yatzi_files/style.css"></head>
+
+<body class="expansion-alids-init" cz-shortcut-listen="true">
+    <div id="header" class="header">
+        <div class="logo"><h1>YATZY</h1></div>
+        <div class="menu-nav">
+            <ul>
+                <li><a href="http://127.0.0.1:5502/Yatzi.html#">My Profile</a></li>
+                <li><a href="http://127.0.0.1:5502/Yatzi.html#">My Scores</a></li>
+                <li><a href="http://127.0.0.1:5502/Yatzi.html#">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+     
+        
+        <div id="playbox" class="playbox">
+            
+         
+            <h2 id="playbox__title" class="playbox-title">
+                Round <span id="antalRounds">2</span> of 16, 
+                Dice rolls: <span id="antalSpel">0</span>
+            </h2>
+            <div id="diceShowBox" class="diceShow">
+                
+                <div id="dice-show-1" class="diceShow__dice"><img src="./Yatzi_files/Alea_1.png"><input id="save-input-1" type="checkbox"></div>
+                <div id="dice-show-2" class="diceShow__dice"><img src="./Yatzi_files/Alea_2.png"><input id="save-input-2" type="checkbox"></div>
+                <div id="dice-show-3" class="diceShow__dice"><img src="./Yatzi_files/Alea_2.png"><input id="save-input-3" type="checkbox"></div>
+                <div id="dice-show-4" class="diceShow__dice"><img src="./Yatzi_files/Alea_4.png"><input id="save-input-4" type="checkbox"></div>
+                <div id="dice-show-5" class="diceShow__dice"><img src="./Yatzi_files/Alea_5.png"><input id="save-input-5" type="checkbox"></div>
+            </div>
+            
+            <div class="dialogue">
+               <!-- <div id="userAddButton" class="button-placeholder"></div>-->
+                <div id="calculateButton" class="calculateButton" style="display: none;">
+                    <button id="startGameButton" class="calculate-button">Roll the Dices</button>
+                </div>                                    
+            </div>
+        </div>
+        <div class="yatzy-table">
+
+            <table id="main-table"> 
+             <!--   <h1 class="main-title">It is Yatzy Time</h1>-->
+                <tbody>
+                    <tr class="info-row">
+                        <th colspan="2" class="info-row-main">Spelare/Player</th>                        <td id="player_1">
+                            <input id="player_1_input" type="text" name="player_1" placeholder="P1" onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
+
+                        </td>
+                        <td id="player_2">
+                            <input id="player_2_input" type="text" name="player_2" placeholder="P2" onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
+
+                        </td>
+                        <td id="player_3">
+                            <input id="player_3_input" type="text" name="player_3" placeholder="P3" onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
+
+                        </td>
+                        <td id="player_4">
+                            <input id="player_4_input" type="text" name="player_4" placeholder="P4" onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
+
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <th colspan="2">Ettor/Ones</th>
+                        <td id="player1-1" class="row-one"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;">+1</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Tvåor/Twos</th>
+                        <td id="player1-2" class="row-two"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;">+4</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Treor/Threes</th>
+                        <td id="player1-3" class="row-three"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Fyror/Fours</th>
+                        <td id="player1-4" class="row-four"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;">+4</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Femmor/Fives</th>
+                        <td id="player1-5" class="row-five"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;">+5</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Sexor/Sixes</th>
+                        <td id="player1-6" class="row-sex"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr class="info-row">
+                        <th colspan="2" class="info-row-main">Summa/Sum</th>
+                        <td id="summa"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="display:none"></td>
+                    </tr>
+                    <tr class="info-row">
+                        <th colspan="2" class="info-row-main">Bonus</th>
+                        <td id="bonus"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="display:none"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Par/Pair</th>
+                        <td id="player1-7"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;">+4</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Två Par/Two Pairs</th>
+                        <td id="player1-8"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Tretal/Three of a kind</th>
+                        <td id="player1-9"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Fyrtal/Four of a kind</th>
+                        <td id="player1-10"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Liten stege/Small straight</th>
+                        <td id="player1-11"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Stor stege/Large straight</th>
+                        <td id="player1-12"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Kåk/Full house</th>
+                        <td id="player1-13" class="info-row-point">16</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: none;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Chans/Chance</th>
+                        <td id="player1-14"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;">+14</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Yatzy</th>
+                        <td id="player1-15"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="pointsDisplay" style="display: inline;"><img src="./Yatzi_files/x.png" width="15px" height="15px/"></td>
+                    </tr>
+                    <tr class="info-row">
+                        <th colspan="2" class="info-row-main">Totalt/Total</th>
+                        <td id="totalSumma"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </div>
+
+    <script async="" src="./Yatzi_files/analytics.js"></script><script src="./Yatzi_files/game.js"></script>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<button id="tw_schedule_btn" style="padding: 4px 6px; position: absolute; left: 141px; top: 840px; background: linear-gradient(rgb(255, 255, 255), rgb(240, 240, 240)); border: 1px solid rgb(204, 204, 204); color: rgb(95, 95, 95); cursor: pointer; font-weight: bold; text-shadow: rgb(255, 255, 255) 0px 1px; white-space: nowrap; border-radius: 3px; font-size: 11px; z-index: 8675309; display: none;"><em id="schedule-button-logo" style="background-image: url(&quot;https://www.tailwindapp.com/app/extensions/Tailwind_swoosh.png&quot;); width: 16px; height: 16px; margin-top: -4px; display: inline-block; position: relative; vertical-align: middle; background-size: 16px;"></em><span>Schedule</span></button><iframe src="./Yatzi_files/start.html" style="display:none"></iframe>
+</body></html>
