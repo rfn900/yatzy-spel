@@ -74,7 +74,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
             console.log(player1Points)
 
             return player1Points.reduce((previous_value, current_die) => {
-                return player1Sum.innerHTML = previous_value + current_die +15;
+                return player1Sum.innerHTML = previous_value + current_die;
             }, 0);    
     }
         checkForBonus(){
