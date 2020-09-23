@@ -1,6 +1,13 @@
+
 window.addEventListener("DOMContentLoaded", ()=>{
+    let numberOfPlayers = parseInt(prompt("How many players? Min: 1 Max: 4"))
     
+    this.checkbox = Array.from(document.getElementsByClassName("check-input")).map(element=>element.style.display = "none")
+
     startGameButton = document.getElementById("startGameButton");
+
+
+
 
     // We create a class here...
 
@@ -8,8 +15,10 @@ window.addEventListener("DOMContentLoaded", ()=>{
         constructor(size = 5){
             this.dice = [];
             this.dice_values = [0, 0, 0, 0, 0, 0, 0];
+            this.checkbox = Array.from(document.getElementsByClassName("check-input")).map(element=>element.checked)
             for (let i = 0; i < size; i++) {
-                this.dice.push(new Dice());
+                this.dice.push(new Dice(i, this.checkbox[i]));
+                this.showDiceImages(i);
             }
             this.calculateDiceValues();
         }
@@ -18,6 +27,14 @@ window.addEventListener("DOMContentLoaded", ()=>{
             this.dice.map(current_value => {
                 this.dice_values[current_value.value]++;
             })
+        }
+
+        showDiceImages(i){
+            if(!this.checkbox[i]){
+                let updatefield = `<img src='./images/Alea_${this.dice[i].value}.png'><input id="save-input-${(i+1)}" class="check-input" type="checkbox">`
+                document.getElementById("dice-show-"+(i+1)).innerHTML=updatefield
+            }
+            
         }
 
         upperTablePoints(){
@@ -69,7 +86,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
         upperTableTotalSum(){
             let player1Points = this.confirmPoints().map(e=>Number(e.innerHTML));//Vi skapar en ny aray med endast nummrerna ifrån player1Points
-            let player1Sum = document.getElementById("summa");            
+            let player1Sum = document.getElementById("sum-1");            
             //console.log(player1Points)
 
             return player1Points.reduce((previous_value, current_die) => {
@@ -77,8 +94,8 @@ window.addEventListener("DOMContentLoaded", ()=>{
             }, 0);    
     }
         checkForBonus(){
-            let player1Sum = document.getElementById("summa").innerHTML;
-            let player1Bonus = document.getElementById("bonus");
+            let player1Sum = document.getElementById("sum-1").innerHTML;
+            let player1Bonus = document.getElementById("bonus-1");
 
             if (Number(player1Sum)>=63){
                 player1Bonus.innerHTML = 50
@@ -89,8 +106,14 @@ window.addEventListener("DOMContentLoaded", ()=>{
     // Creating a new object with one property,
     // the property is a random value between 1-6.
     class Dice {
-        constructor() {
-            this.value = this.new_value();
+        constructor(i=0, isCheckBoxChecked = false) {
+            if(!isCheckBoxChecked){
+                this.value = this.new_value();
+            }else{
+                let imgstr = document.getElementById("dice-show-"+(i+1)).firstChild.src
+                this.value = Number(imgstr.split("_")[1].slice(0,1))
+            }
+            
         }
         new_value() {
             return Math.floor(Math.random() * 6) + 1;
@@ -102,6 +125,8 @@ window.addEventListener("DOMContentLoaded", ()=>{
             this.tdShowPoints = Array.from(document.getElementsByClassName("pointsDisplay"))
             this.dice_rolls = Number(document.getElementById("antalSpel").innerHTML)
             this.game_rounds = Number(document.getElementById("antalRounds").innerHTML)
+            this.checkbox = document.getElementsByClassName("check-input")
+
             this.current_points = []
             for (let i=0; i < 15; i++){
 
@@ -112,14 +137,28 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
         turnControl(){
             let dice_rolls = this.dice_rolls
+            console.log(dice_rolls)
+
+            // if(dice_rolls == 1){
+            //     console.log(dice_rolls)
+            //     Array.from(this.checkbox).map(element => element.checked = false)
+            //     Array.from(this.checkbox).map(element => element.style.display = "none")
+            // } else if (dice_rolls != 1){
+                
+            //     Array.from(this.checkbox).map(element => element.style.display = "block")
+            // }
             dice_rolls--
+             
             document.getElementById("antalSpel").innerHTML = dice_rolls
+            
             let startButton = document.getElementById("startGameButton")
             if (dice_rolls === 0){
                 startButton.style.display = "none"
             }
             this.tdShowPoints.map(e=>{
                 e.addEventListener("click",()=>{
+                    Array.from(this.checkbox).map(element => element.checked = false)
+                    Array.from(this.checkbox).map(element => element.style.display = "none")
                     let game_rounds = this.game_rounds // Update number of rounds
                     game_rounds++ // Update number of rounds 
                     document.getElementById("antalRounds").innerHTML = game_rounds // Update number of rounds
@@ -142,6 +181,8 @@ window.addEventListener("DOMContentLoaded", ()=>{
         }
     }
 
+
+
     startGameButton.addEventListener("click", () => { 
 
         let newThrow = new Dices();
@@ -155,6 +196,4 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
        
     })
-
-
 })
