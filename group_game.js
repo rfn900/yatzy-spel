@@ -9,26 +9,37 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
 
 
-    // We create a class here...
+    // We create a  first Dices class here which has 3 attribues
+    // One attribute of an array in which we will push 5 Dice Objects (with a random value)
+    // One attribute in which we will keep track of how many of each dice we've had.
+    // One attribute for the checkboxes below the dices 
 
     class Dices {
         constructor(size = 5){
             this.dice = [];
             this.dice_values = [0, 0, 0, 0, 0, 0, 0];
             this.checkbox = Array.from(document.getElementsByClassName("check-input")).map(element=>element.checked)
+
+            // Here we're pushing a new dice into the "this" dice array 
+            // which will also show the right image depending on what number you get
+
             for (let i = 0; i < size; i++) {
                 this.dice.push(new Dice(i, this.checkbox[i]));
                 this.showDiceImages(i);
             }
             this.calculateDiceValues();
         }
-
+        // In this method we're mapping the this.dice array and incrementing the value of each dice
+        // For example, if we've had 2x Ones and 3x Fives in a dice throw this map function will give the
+        // this.dice_values array the following values [0, 2, 0, 0, 0, 3, 0]
         calculateDiceValues(){
             this.dice.map(current_value => {
                 this.dice_values[current_value.value]++;
             })
         }
-
+        
+        // Method that sets new dice image depending on value of the dice 
+        // If a checkbox is checked it doesn't change the image for the next roll.
         showDiceImages(i){
             if(!this.checkbox[i]){
                 let updatefield = `<img src='./images/Alea_${this.dice[i].value}.png'><input id="save-input-${(i+1)}" class="check-input" type="checkbox">`
@@ -37,6 +48,10 @@ window.addEventListener("DOMContentLoaded", ()=>{
             
         }
 
+
+        // Method that calculates the points for the upper table (Ones to Sixes).
+        // Does it by checking each element in the dice_values array and multiplies them by the index
+        // i.e If there are 5x threes it will multiply the element (5) by the index number (3) and return 15.
         upperTablePoints(){
             let pointsArray = [0, 0, 0, 0, 0, 0, 0];
             //[0, 2, 1, 0, 0, 2, 0] -> 2*1 + 1*2 + 2*5 = 14
@@ -47,6 +62,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
             return pointsArray;
         }
 
+        // Method that calculates the upper table results and shows them to the right of the yatzy form
         printUpperTableResults(){
             let pointsArray = this.upperTablePoints();
             // We need to get rid of index = 0. The shift() method does just that!
