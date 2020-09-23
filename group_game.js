@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
                     tdShowPoints[i].innerHTML = "+" + pointsArray[i]                
                 } else tdShowPoints[i].innerHTML = ""
             }
-            tdShowPoints.forEach(element =>{ //Behövs för att få tillbaka poängen nästa runda
+            tdShowPoints.filter(e=>e.innerHTML!="").forEach(element =>{ //Behövs för att få tillbaka poängen nästa runda
                 element.style.display="block";
             });
    
@@ -61,7 +61,6 @@ window.addEventListener("DOMContentLoaded", ()=>{
                     });
                     this.upperTableTotalSum();
                     this.checkForBonus();
-
                 })
             }
             return player1Points;
@@ -71,7 +70,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
         upperTableTotalSum(){
             let player1Points = this.confirmPoints().map(e=>Number(e.innerHTML));//Vi skapar en ny aray med endast nummrerna ifrån player1Points
             let player1Sum = document.getElementById("summa");            
-            console.log(player1Points)
+            //console.log(player1Points)
 
             return player1Points.reduce((previous_value, current_die) => {
                 return player1Sum.innerHTML = previous_value + current_die;
@@ -98,13 +97,63 @@ window.addEventListener("DOMContentLoaded", ()=>{
         }
     }
     
+    class Game {
+        constructor(){
+            this.tdShowPoints = Array.from(document.getElementsByClassName("pointsDisplay"))
+            this.dice_rolls = Number(document.getElementById("antalSpel").innerHTML)
+            this.game_rounds = Number(document.getElementById("antalRounds").innerHTML)
+            this.current_points = []
+            for (let i=0; i < 15; i++){
+
+                this.current_points[i] = Number(this.tdShowPoints[i].innerHTML)
+            }
+            //this.current_points =
+        }
+
+        turnControl(){
+            let dice_rolls = this.dice_rolls
+            dice_rolls--
+            document.getElementById("antalSpel").innerHTML = dice_rolls
+            let startButton = document.getElementById("startGameButton")
+            if (dice_rolls === 0){
+                startButton.style.display = "none"
+            }
+            this.tdShowPoints.map(e=>{
+                e.addEventListener("click",()=>{
+                    let game_rounds = this.game_rounds // Update number of rounds
+                    game_rounds++ // Update number of rounds 
+                    document.getElementById("antalRounds").innerHTML = game_rounds // Update number of rounds
+
+                    startButton.style.display = "initial"
+                    document.getElementById("antalSpel").innerHTML = 3 // Reset number of Dice Throws
+                })
+            })
+        }
+
+        // tellUserToChoosePoints(){   
+        //   let divWithButton = document.getElementById("calculateButton")
+        //   let message = document.createElement("H3")
+        //   message.innerHTML = "Choose Your Points on the Side of the Table"
+        //   divWithButton.appendChild(message) 
+        // }
+
+        writePointsOnSide(){
+            //do your thing
+        }
+    }
+
     startGameButton.addEventListener("click", () => { 
 
         let newThrow = new Dices();
-
         newThrow.printUpperTableResults();
 
         newThrow.confirmPoints();
+
+        let game = new Game();
+
+        game.turnControl()
+
+       
     })
 
 
