@@ -81,6 +81,9 @@ window.addEventListener("DOMContentLoaded", ()=>{
    
         }
 
+        // In this Method we have an event listener that will make sure that when we click on the points we want to save
+        // It will be transfered into the correct column/row and it will also update the total sum/bonus for the player 
+        // when we've pressed the points we want.
         confirmPoints(){
             let tdShowPoints = Array.from(document.getElementsByClassName("pointsDisplay"));
             let player1Points = [];
@@ -100,6 +103,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
         
         }
 
+        // Method that updates the player points.
         upperTableTotalSum(){
             let player1Points = this.confirmPoints().map(e=>Number(e.innerHTML));//Vi skapar en ny aray med endast nummrerna ifrån player1Points
             let player1Sum = document.getElementById("sum-1");            
@@ -109,6 +113,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
                 return player1Sum.innerHTML = previous_value + current_die;
             }, 0);    
     }
+        // Method that checks for bonus. If sum is >= 63 you get a bonus, else you get 0.
         checkForBonus(){
             let player1Sum = document.getElementById("sum-1").innerHTML;
             let player1Bonus = document.getElementById("bonus-1");
